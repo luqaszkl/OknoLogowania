@@ -18,6 +18,7 @@ body {
   color: white;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .form__input-container {
@@ -33,6 +34,9 @@ form {
   text-align: center;
   box-shadow: 0px 10px 10px rgb(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 input {
   width: 100%;
@@ -47,7 +51,9 @@ button {
   color: white;
   padding: 12px 24px;
   font-size: 24px;
-  transition: box-shadow 0.3s, outline 0.3s;
+  transition:
+    box-shadow 0.3s,
+    outline 0.3s;
 }
 
 label {
@@ -80,46 +86,41 @@ button:focus {
   outline: solid 3px rgba(255, 255, 255, 0.3);
 }
 
-
 button {
   cursor: pointer;
   overflow: hidden;
   position: relative;
 }
 
-button:after
-{   background: rgba(255, 255, 255, 0.5);
-    content: "";
-    display: block;
-    height: 100px;
-    left: -70px;
-    top: -50%;
-    width: 50px;
-    transform: skewX(-15deg);
-    position: absolute;
-    transition: left 0.15s linear;
+button:after {
+  background: rgba(255, 255, 255, 0.5);
+  content: "";
+  display: block;
+  height: 100px;
+  left: -70px;
+  top: -50%;
+  width: 50px;
+  transform: skewX(-15deg);
+  position: absolute;
+  transition: left 0.15s linear;
 }
 
-button:hover:after
-{
-    left: 110%;
+button:hover:after {
+  left: 110%;
 }
 
-
-.form__icon
-{   border: solid 3px rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    box-shadow: 0px 8px 24px 0 rgba(255, 255, 255, 0.3);
-    height: 72px;
-    margin: 0 auto 24px;
-    overflow: hidden;
-    position: relative;
-    width: 72px;
-
+.form__icon {
+  border: solid 3px rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  box-shadow: 0px 8px 24px 0 rgba(255, 255, 255, 0.3);
+  height: 72px;
+  margin: 0 auto 24px;
+  overflow: hidden;
+  position: relative;
+  width: 72px;
 }
 
-.form__icon:after
-{
+.form__icon:after {
   background: rgba(255, 255, 255, 0.6);
   top: 10px;
   border-radius: 50%;
@@ -132,8 +133,7 @@ button:hover:after
   width: 24px;
 }
 
-.form__icon:before
-{
+.form__icon:before {
   background: rgba(255, 255, 255, 0.6);
   bottom: -15px;
   border-radius: 50%;
@@ -146,50 +146,66 @@ button:hover:after
   width: 50px;
 }
 
-.form__spacer
-{
-    height: 2px;
-    background: rgba(255, 255, 255, 0.55);
-    border-radius: 100%;
-    margin: 0 auto 32px;
-    width: 80%;
+.form__spacer {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 100%;
+  margin: 0 auto 32px;
+  width: 80%;
 }
 
-.bg
-{
-    height: 100%;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    top: 0;
+.bg {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  top: 0;
 }
 
-.bg__dot
-{
-    background: linear-gradient(
-        to left,
-        var(--color--light),
-        rgba(255,255,255,0.3)
-    );
-    border-radius: 50%;
-    height: 10vh;
-    width: 10vh;
+.bg__dot {
+  background: linear-gradient(
+    to left,
+    var(--color--light),
+    rgba(216, 209, 209, 0.963)
+  );
+  border-radius: 50%;
+  height: 10vh;
+  width: 10vh;
 }
 
-.bg__dot:nth-child(1)
-{
-    height: 50vh;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 50vh;
+.bg__dot:nth-child(1) {
+  animation: move1 10s linear infinite;
+  height: 50vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 50vh;
 }
 
-.bg__dot:nth-child(2)
-{
-    height: 30vh;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    width: 30vh;
+.bg__dot:nth-child(2) {
+  animation: move2 15s linear infinite;
+  height: 30vh;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: 30vh;
 }
+
+@keyframes move1 {
+  from {
+    transform: translateY(-50vh);
+  }
+    to {
+      transform: translateY(100vh);
+    }
+  }
+
+  @keyframes move2 {
+  from {
+    transform: translateY(50vh);
+  }
+    to {
+      transform: translateY(-30vh);
+    }
+  }
+
